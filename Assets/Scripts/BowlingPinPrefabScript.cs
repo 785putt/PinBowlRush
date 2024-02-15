@@ -13,6 +13,15 @@ public class BowlingPinPrefabScript : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("AR Manager");
+        readGameState = gameManager.GetComponent<Game>().gameState;
+        if (readGameState == GameState.Gameplay)
+        {
+            bowlingPinPrefab.GetComponent<Rigidbody>().isKinematic = false;
+        }
+        else
+        {
+            bowlingPinPrefab.GetComponent<Rigidbody>().isKinematic = true;
+        }
     }
 
     // Update is called once per frame
@@ -21,14 +30,11 @@ public class BowlingPinPrefabScript : MonoBehaviour
         readGameState = gameManager.GetComponent<Game>().gameState;
         if (readGameState == GameState.Gameplay)
         {
-            bowlingPinPrefab.GetComponent<Rigidbody>().isKinematic = false;
-            // Debug.Log("Gameplay going on"); 
-            // Set the velocity of the bowling pin to zero
             bowlingPinPrefab.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         else
         {
-            bowlingPinPrefab.GetComponent<Rigidbody>().isKinematic = true;
+
         }
     }
     IEnumerator OnCollisionEnter(Collision collision)

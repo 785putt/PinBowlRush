@@ -156,7 +156,8 @@ public class SurfaceChecker : MonoBehaviour
         targetIndicator.SetActive(false);
         placingObjectButton.SetActive(false);
         gameover.SetActive(false);
-        // additionalSpawnedObject[0].GetComponent<Rigidbody>().isKinematic = false;
+        additionalSpawnedObject[0].GetComponent<Rigidbody>().isKinematic = false;
+        gameManager.GetComponent<Game>().ActivateBowlingPinSet();
         // Activate the bowling pins
         // Debug.Log("Bowling Pin Set Activated");
     }
@@ -198,7 +199,7 @@ public class SurfaceChecker : MonoBehaviour
         {
             bowlingBallSpawned = true;
             additionalSpawnedObject.Add(Instantiate(choiceUI, placementPose.position, placementPose.rotation));
-            // additionalSpawnedObject[additionalSpawnedObject.Count() - 1].GetComponent<Rigidbody>().isKinematic = true;
+            additionalSpawnedObject[additionalSpawnedObject.Count() - 1].GetComponent<Rigidbody>().isKinematic = true;
             choiceUI = speedBoosterPrefab;
         }
         else if (choiceUI == bowlingPinPrefab && !bowlingPinSpawned)

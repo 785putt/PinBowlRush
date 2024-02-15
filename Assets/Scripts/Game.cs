@@ -129,7 +129,9 @@ public class Game : MonoBehaviour
         for (int i = 0; i < bowlingPins.Count(); i++)
         {
             bowlingPins[i].SetActive(true);
+            bowlingPins[i].GetComponent<Rigidbody>().isKinematic = true;
             bowlingPins[i].transform.SetPositionAndRotation(bowlingRespawnPosition[i], Quaternion.identity);
+            bowlingPins[i].GetComponent<Rigidbody>().isKinematic = false;
         }
         Alldown.Play();
     }

@@ -40,15 +40,15 @@ public class BowlingBallScript : MonoBehaviour
         initialBowlingBallPosition = transform.position;
         Debug.Log("Initial Ball Position: " + initialBowlingBallPosition);
         currentGameState = gameManager.GetComponent<Game>().gameState;
-        bowlingBallRigidBody.isKinematic = false;
-        // if (currentGameState == GameState.Gameplay)
-        // {
-        //     bowlingBallRigidBody.isKinematic = false;
-        // }
-        // else
-        // {
-        //     bowlingBallRigidBody.isKinematic = true;
-        // }
+        // bowlingBallRigidBody.isKinematic = false;
+        if (currentGameState == GameState.Gameplay)
+        {
+            bowlingBallRigidBody.isKinematic = false;
+        }
+        else
+        {
+            bowlingBallRigidBody.isKinematic = true;
+        }
     }
 
     // Update is called once per frame
